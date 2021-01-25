@@ -1,5 +1,6 @@
 #include <iostream>
 #include <time.h>
+#include <Windows.h>
 
 using namespace std;
 
@@ -56,6 +57,7 @@ int main(void)
 				cout << "½ÇÆÐ" << endl;
 				break;
 			}
+			Sleep(500);
 			system("cls");
 		}
 
