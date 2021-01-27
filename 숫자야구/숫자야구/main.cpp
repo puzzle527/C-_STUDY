@@ -7,10 +7,7 @@ int main(void)
 {
 	srand(time(NULL));
 
-	int Strike;
-	int Ball;
-	int Out;
-	int Count;
+	int Strike, Ball, Out, Count;
 	char Com[3];
 	char Player[4];
 	char Num[9] = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
