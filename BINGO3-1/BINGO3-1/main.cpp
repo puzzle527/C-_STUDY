@@ -17,7 +17,7 @@ int main(void)
 	const int Row = 5;
 	const int Col = 5;
 
-	int **PBingo = new int *[5];
+	/*int **PBingo = new int *[5];
 	for (int i = 0; i < Row; i++)
 	{
 		PBingo[i] = new int[5]{};
@@ -26,8 +26,9 @@ int main(void)
 	for (int i = 0; i < Row; i++)
 	{
 		CBingo[i] = new int[5]{};
-	}
-
+	}*/
+	int PBingo[5][5];
+	int CBingo[5][5];
 
 
 	int PCnt = 0;
@@ -80,7 +81,7 @@ int main(void)
 		PCnt = BINGO(PBingo, Row, Col);
 		CCnt = BINGO(CBingo, Row, Col);
 	}
-	for (int i = 0; i < Row; i++)
+	/*for (int i = 0; i < Row; i++)
 	{
 		delete[] PBingo[i];
 	}
@@ -89,7 +90,7 @@ int main(void)
 	{
 		delete[] CBingo[i];
 	}
-	delete[] CBingo;
+	delete[] CBingo;*/
 
 	return 0;
 }
