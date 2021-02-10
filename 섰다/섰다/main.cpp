@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <time.h>
 #include <string>
 #include <Windows.h>
@@ -27,19 +27,19 @@ int main(void)
 	string*		Player;
 	int			PlayerNum;
 
-	cout << "¼¸´Ù" << endl << endl;
+	cout << "ì„¯ë‹¤" << endl << endl;
 
 	while (1)
 	{
 		DECK = new CARD[Size];
 
-		cout << "ÇÃ·¹ÀÌ¾î ¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä : ";
+		cout << "í”Œë ˆì´ì–´ ìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš” : ";
 		cin >> PlayerNum;
 		if (PlayerNum > 10 || cin.fail())
 		{
 			cin.clear();
 			cin.ignore(1, '\n');
-			cout << "10¸í ÀÌÇÏ·Î ÀÔ·ÂÇÏ¼¼¿ä" << endl;
+			cout << "10ëª… ì´í•˜ë¡œ ì…ë ¥í•˜ì„¸ìš”" << endl;
 			Sleep(500);
 			system("cls");
 			continue;
@@ -49,7 +49,7 @@ int main(void)
 
 		for (int i = 0; i < PlayerNum; i++)
 		{
-			cout << i + 1 << "¹øÂ° ÇÃ·¹ÀÌ¾î ÀÌ¸§À» ÀÔ·ÂÇÏ¼¼¿ä : ";
+			cout << i + 1 << "ë²ˆì§¸ í”Œë ˆì´ì–´ ì´ë¦„ì„ ì…ë ¥í•˜ì„¸ìš” : ";
 			cin >> *(Player + i);
 		}
 
@@ -73,9 +73,9 @@ void InitDeck(CARD* DECK)
 		(DECK + i)->Number = i % 10 + 1;
 		(DECK + i)->Shape = " ";
 	}
-	DECK->Shape = "±¤";
-	(DECK + 2)->Shape = "±¤";
-	(DECK + 7)->Shape = "±¤";
+	DECK->Shape = "ê´‘";
+	(DECK + 2)->Shape = "ê´‘";
+	(DECK + 7)->Shape = "ê´‘";
 }
 
 void Shuffle(CARD* DECK)
@@ -95,70 +95,70 @@ string CheckCard(CARD one, CARD two)
 {
 	string str;
 
-	if (one.Shape == "±¤" && two.Shape == "±¤")
+	if (one.Shape == "ê´‘" && two.Shape == "ê´‘")
 	{
 		if ((one.Number == 3 && two.Number == 8) || (one.Number == 8 && two.Number == 3))
-			str = "3.8±¤¶¯";
+			str = "3.8ê´‘ë•¡";
 		else if ((one.Number == 1 && two.Number == 8) || (one.Number == 8 && two.Number == 1))
-			str = "1.8±¤¶¯";
+			str = "1.8ê´‘ë•¡";
 		else if ((one.Number == 3 && two.Number == 1) || (one.Number == 1 && two.Number == 3))
-			str = "1.3±¤¶¯";
+			str = "1.3ê´‘ë•¡";
 	}
 	else if (one.Number == two.Number)
 	{
 		if (one.Number == 10)
-			str = "10¶¯";
+			str = "10ë•¡";
 		else if (one.Number == 9)
-			str = "9¶¯";
+			str = "9ë•¡";
 		else if (one.Number == 8)
-			str = "8¶¯";
+			str = "8ë•¡";
 		else if (one.Number == 7)
-			str = "7¶¯";
+			str = "7ë•¡";
 		else if (one.Number == 6)
-			str = "6¶¯";
+			str = "6ë•¡";
 		else if (one.Number == 5)
-			str = "5¶¯";
+			str = "5ë•¡";
 		else if (one.Number == 4)
-			str = "4¶¯";
+			str = "4ë•¡";
 		else if (one.Number == 3)
-			str = "3¶¯";
+			str = "3ë•¡";
 		else if (one.Number == 2)
-			str = "2¶¯";
+			str = "2ë•¡";
 		else if (one.Number == 1)
-			str = "1¶¯";
+			str = "1ë•¡";
 	}
 	else
 	{
 		if ((one.Number + two.Number) % 10 == 9)
-			str = "9²ı";
+			str = "9ë—";
 		if ((one.Number + two.Number) % 10 == 8)
-			str = "8²ı";
+			str = "8ë—";
 		if ((one.Number + two.Number) % 10 == 7)
-			str = "7²ı";
+			str = "7ë—";
 		if ((one.Number + two.Number) % 10 == 6)
-			str = "6²ı";
+			str = "6ë—";
 		if ((one.Number + two.Number) % 10 == 5)
-			str = "5²ı";
+			str = "5ë—";
 		if ((one.Number + two.Number) % 10 == 4)
-			str = "4²ı";
+			str = "4ë—";
 		if ((one.Number + two.Number) % 10 == 3)
-			str = "3²ı";
+			str = "3ë—";
 		if ((one.Number + two.Number) % 10 == 2)
-			str = "2²ı";
+			str = "2ë—";
 		if ((one.Number + two.Number) % 10 == 1)
-			str = "1²ı";
+			str = "1ë—";
 		if ((one.Number + two.Number) % 10 == 0)
-			str = "0²ı";
+			str = "0ë—";
 	}
 	return str;
 }
 
 void Print(CARD* DECK, string* Player, int PlayerNum)
 {
-	cout << "\t\t\t" << "Ã¹¹øÂ° Ä«µå\t" << "µÎ¹øÂ° Ä«µå\t" << "Ä«µå °á°ú" << endl << endl;
+	cout << "\t\t\t" << "ì²«ë²ˆì§¸ ì¹´ë“œ\t" << "ë‘ë²ˆì§¸ ì¹´ë“œ\t" << "ì¹´ë“œ ê²°ê³¼" << endl << endl;
 	for (int i = 0; i < PlayerNum * 2; i += 2)
 	{
-		cout << "ÇÃ·¹ÀÌ¾î ÀÌ¸§ : " << *(Player + i / 2) << "\t   "
+		cout << "í”Œë ˆì´ì–´ ì´ë¦„ : " << *(Player + i / 2) << "\t   "
 			<< (DECK + i)->Number << (DECK + i)->Shape << "\t\t"
 			<< (DECK + i + 1)->Number << (DECK + i + 1)->Shape << "  \t\t"
 			<< CheckCard(*(DECK + i), *(DECK + i + 1)) << endl << endl;
@@ -168,8 +168,8 @@ void Print(CARD* DECK, string* Player, int PlayerNum)
 void VicPrint(CARD* DECK, string* Player, int PlayerNum)
 {
 	string* PlayerResult = new string[PlayerNum];
-	string Result[23] = { "3.8±¤¶¯", "1.8±¤¶¯", "1.3±¤¶¯", "10¶¯", "9¶¯", "8¶¯", "7¶¯", "6¶¯", "5¶¯", "4¶¯", "3¶¯", "2¶¯", "1¶¯",
-							"9²ı", "8²ı", "7²ı", "6²ı", "5²ı", "4²ı", "3²ı", "2²ı", "1²ı", "0²ı" };
+	string Result[23] = { "3.8ê´‘ë•¡", "1.8ê´‘ë•¡", "1.3ê´‘ë•¡", "10ë•¡", "9ë•¡", "8ë•¡", "7ë•¡", "6ë•¡", "5ë•¡", "4ë•¡", "3ë•¡", "2ë•¡", "1ë•¡",
+							"9ë—", "8ë—", "7ë—", "6ë—", "5ë—", "4ë—", "3ë—", "2ë—", "1ë—", "0ë—" };
 
 	for (int i = 0; i < PlayerNum * 2; i += 2)
 	{
@@ -187,7 +187,7 @@ void VicPrint(CARD* DECK, string* Player, int PlayerNum)
 	for (int i = 0; i < PlayerNum; i++)
 	{
 		if (PlayerResult[i] == Result[index])
-			cout << "½Â¸® ÇÃ·¹ÀÌ¾î : " << *(Player + i) << endl;
+			cout << "ìŠ¹ë¦¬ í”Œë ˆì´ì–´ : " << *(Player + i) << endl;
 	}
 	cout << endl;
 	delete[] PlayerResult;
