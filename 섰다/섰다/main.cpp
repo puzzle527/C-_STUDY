@@ -4,7 +4,6 @@
 #include <Windows.h>
 #define Size 20
 
-
 using namespace std;
 
 struct CARD
@@ -28,7 +27,7 @@ int main(void)
 	string*		Player;
 	int			PlayerNum;
 
-	cout << "¼¹´Ù" << endl << endl;
+	cout << "¼¸´Ù" << endl << endl;
 
 	while (1)
 	{
