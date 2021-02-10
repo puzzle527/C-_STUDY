@@ -4,6 +4,7 @@
 #include <Windows.h>
 #define Size 20
 
+
 using namespace std;
 
 struct CARD
