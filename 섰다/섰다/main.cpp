@@ -27,7 +27,7 @@ int main(void)
 	string*		Player;
 	int			PlayerNum;
 
-	cout << "섯다" << endl << endl;
+	cout << "섰다" << endl << endl;
 
 	while (1)
 	{
