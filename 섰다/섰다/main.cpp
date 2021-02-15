@@ -14,10 +14,9 @@ struct CARD
 
 void InitDeck(CARD* DECK);
 void Shuffle(CARD* DECK);
-void ft_Delete(string* Player, CARD* DECK);
 string CheckCard(CARD one, CARD two);
 void Print(CARD* DECK, string* Player, int PlayerNum);
-void VicPrint(CARD* DECK, string* Player, int PlayerNum);
+void VicPrint(CARD* DECK, string* Player, int PlayerNum, int* PlayerMoney, int* BetMoney);
 
 int main(void)
 {
@@ -26,42 +25,65 @@ int main(void)
 	CARD*		DECK;
 	string*		Player;
 	int			PlayerNum;
+	int*		PlayerMoney;
+	int			Bet;
+	int			BetMoney;
 
 	cout << "섰다" << endl << endl;
 
+	cout << "플레이어 수를 입력하세요 : ";
+	cin >> PlayerNum;
+	
+	Player = new string[PlayerNum];
+	PlayerMoney = new int[PlayerNum];
+
+	for (int i = 0; i < PlayerNum; i++)
+	{
+		cout << i + 1 << "번째 플레이어 이름을 입력하세요 : ";
+		cin >> *(Player + i);
+	}
+	for (int i = 0; i < PlayerNum; i++)
+	{
+		*(PlayerMoney + i) = 30000;
+	}
+
+	system("cls");
+
 	while (1)
 	{
-		DECK = new CARD[Size];
-
-		cout << "플레이어 수를 입력하세요 : ";
-		cin >> PlayerNum;
-		if (PlayerNum > 10 || cin.fail())
+		BetMoney = 0;
+		cout << "플레이어 자산" << endl;
+		for (int i = 0; i < PlayerNum; i++)
 		{
-			cin.clear();
-			cin.ignore(1, '\n');
-			cout << "10명 이하로 입력하세요" << endl;
-			Sleep(500);
-			system("cls");
-			continue;
+			cout << *(Player + i) << " : " << *(PlayerMoney + i) << endl;
 		}
 
-		Player = new string[PlayerNum];
+		cout << "1.베팅(3000원) 2.게임종료" << endl;
+		cin >> Bet;
+		if (Bet == 2)
+			break;
+
+		system("cls");
+		cout << "결과 확인" << endl << endl;
 
 		for (int i = 0; i < PlayerNum; i++)
 		{
-			cout << i + 1 << "번째 플레이어 이름을 입력하세요 : ";
-			cin >> *(Player + i);
+			*(PlayerMoney + i) -= 3000;
+			BetMoney += 3000;
 		}
 
-		system("cls");
+		DECK = new CARD[Size];
 
 		InitDeck(DECK);
 		Shuffle(DECK);
-		Print(DECK, Player, PlayerNum);
-		VicPrint(DECK, Player, PlayerNum);
 
-		ft_Delete(Player, DECK);
+		Print(DECK, Player, PlayerNum);
+		VicPrint(DECK, Player, PlayerNum, PlayerMoney, &BetMoney);
+
+		delete[] DECK;
 	}
+	delete[] Player;
+	delete[] PlayerMoney;
 
 	return 0;
 }
@@ -165,11 +187,12 @@ void Print(CARD* DECK, string* Player, int PlayerNum)
 	}
 }
 
-void VicPrint(CARD* DECK, string* Player, int PlayerNum)
+void VicPrint(CARD* DECK, string* Player, int PlayerNum, int* PlayerMoney, int* BetMoney)
 {
 	string* PlayerResult = new string[PlayerNum];
 	string Result[23] = { "3.8광땡", "1.8광땡", "1.3광땡", "10땡", "9땡", "8땡", "7땡", "6땡", "5땡", "4땡", "3땡", "2땡", "1땡",
 							"9끗", "8끗", "7끗", "6끗", "5끗", "4끗", "3끗", "2끗", "1끗", "0끗" };
+	int Sum = 0;
 
 	for (int i = 0; i < PlayerNum * 2; i += 2)
 	{
@@ -187,14 +210,17 @@ void VicPrint(CARD* DECK, string* Player, int PlayerNum)
 	for (int i = 0; i < PlayerNum; i++)
 	{
 		if (PlayerResult[i] == Result[index])
+		{
 			cout << "승리 플레이어 : " << *(Player + i) << endl;
+			Sum++;
+		}
+	}
+	*BetMoney = (*BetMoney) / Sum;
+	for (int i = 0; i < PlayerNum; i++)
+	{
+		if (PlayerResult[i] == Result[index])
+			*(PlayerMoney + i) += *BetMoney;
 	}
 	cout << endl;
 	delete[] PlayerResult;
-}
-
-void ft_Delete(string* Player, CARD* DECK)
-{
-	delete[] DECK;
-	delete[] Player;
 }
