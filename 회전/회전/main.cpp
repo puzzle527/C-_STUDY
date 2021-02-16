@@ -25,7 +25,7 @@ int main(void)
 			}
 			cout << endl << endl;
 		}
-		cout << "1.哭率 2.坷弗率" << endl;
+		cout << "1.哭率  2.坷弗率" << endl;
 		cin >> Input;
 		if (Input == 1)
 		{
