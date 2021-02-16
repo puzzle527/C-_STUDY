@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #define Size 4
 using namespace std;
 
@@ -25,7 +25,7 @@ int main(void)
 			}
 			cout << endl << endl;
 		}
-		cout << "1.¿ÞÂÊ  2.¿À¸¥ÂÊ" << endl;
+		cout << "1.ì™¼ìª½  2.ì˜¤ë¥¸ìª½" << endl;
 		cin >> Input;
 		if (Input == 1)
 		{
