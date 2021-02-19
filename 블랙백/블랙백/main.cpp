@@ -156,7 +156,7 @@ int main(void)
 			}
 		}
 		index = index + cnt + 4;
-		cout << index << endl;
+		//cout << index << endl;
 		cout << "게임을 계속 하시겠습니까? 1.계속 2.나가기" << endl;
 		cin >> YN;
 		if (YN == '2')
