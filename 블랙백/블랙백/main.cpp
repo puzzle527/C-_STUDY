@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <time.h>
 #include <string>
 #include <vector>
@@ -33,11 +33,11 @@ int main(void)
 	InitDeck(DECK);
 	Shuffle(DECK);
 
-	for (int i = 0; i < 52; i++)
+	/*for (int i = 0; i < 52; i++)
 	{
 		cout << DECK[i].CARD_NUM << DECK[i].CARD_SHAPE << "\t";
 	}
-	cout << endl;
+	cout << endl;*/
 	cout << "블랙잭 게임" << endl << endl;
 
 	while (1)
@@ -81,6 +81,8 @@ int main(void)
 				else
 					cout << Dealer[i].CARD_NUM;
 				cout << Dealer[i].CARD_SHAPE << "   ";
+
+				Dsum += Dealer[i].CARD_NUM;
 			}
 			cout << endl << endl;
 
@@ -102,6 +104,11 @@ int main(void)
 				{
 					while (1)
 					{
+						Dsum = 0;
+						for (int i = 0; i < Dealer.size(); i++)
+						{
+							Dsum += Dealer[i].CARD_NUM;
+						}
 						if (Dsum < 17)
 						{
 							cout << "딜러 카드 더 뽑기" << endl;
@@ -111,10 +118,6 @@ int main(void)
 						}
 						else
 							break;
-						for (int i = 0; i < Dealer.size(); i++)
-						{
-							Dsum += Dealer[i].CARD_NUM;
-						}
 					}
 					Dsum = 0;
 					cout << "딜러가 받은 카드 " << Dealer.size() << "장 : ";
