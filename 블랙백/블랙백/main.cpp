@@ -81,8 +81,6 @@ int main(void)
 				else
 					cout << Dealer[i].CARD_NUM;
 				cout << Dealer[i].CARD_SHAPE << "   ";
-
-				Dsum += Dealer[i].CARD_NUM;
 			}
 			cout << endl << endl;
 
