@@ -205,9 +205,5 @@ int main()
 		Shuffle(deck, 52);
 		CardCount = 0;
 	}
-
-
-
-
 	return 0;
 }
