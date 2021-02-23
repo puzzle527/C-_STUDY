@@ -47,7 +47,7 @@ struct PLAYER
 	bool isLose = false;
 	void PrintHandSum()
 	{
-		cout << "Ä«µå:";
+		cout << "ì¹´ë“œ:";
 		sum = 0;
 		for (int i = 0; i < hand.size(); i++)
 		{
@@ -61,7 +61,7 @@ struct PLAYER
 				sum += hand[i].number;
 			}
 		}
-		cout << "ÇÕ:" << sum << endl;
+		cout << "í•©:" << sum << endl;
 	}
 };
 
@@ -99,16 +99,16 @@ int main()
 		switch ((int)(i / 13))
 		{
 		case 0:
-			deck[i].shape = "¡ß";
+			deck[i].shape = "â—†";
 			break;
 		case 1:
-			deck[i].shape = "¢¼";
+			deck[i].shape = "â™ ";
 			break;
 		case 2:
-			deck[i].shape = "¢¾";
+			deck[i].shape = "â™¥";
 			break;
 		case 3:
-			deck[i].shape = "¢À";
+			deck[i].shape = "â™£";
 			break;
 		}
 		deck[i].number = i % 13 + 1;
@@ -121,7 +121,7 @@ int main()
 
 	while (1)
 	{
-		cout << "ºí·¢Àè °ÔÀÓ " << endl << endl;
+		cout << "ë¸”ëž™ìž­ ê²Œìž„ " << endl << endl;
 		for (int i = 0; i < PLAYERNUM; i++)
 		{
 			pl[i].hand.push_back(deck[CardCount]);
@@ -131,18 +131,18 @@ int main()
 
 			while (1)
 			{
-				cout << "ÇÃ·¹ÀÌ¾î" << i + 1 << endl;
+				cout << "í”Œë ˆì´ì–´" << i + 1 << endl;
 				pl[i].PrintHandSum();
 
 				if (pl[i].sum > 21)
 				{
-					cout << "ÇÃ·¹ÀÌ¾î" << i + 1 << "ÆÐ¹è" << endl;
+					cout << "í”Œë ˆì´ì–´" << i + 1 << "íŒ¨ë°°" << endl;
 					pl[i].isLose = true;
 					pl[i].hand.clear();
 					break;
 				}
 
-				cout << "´õ¹Þ±â 1.y 2.n" << endl;
+				cout << "ë”ë°›ê¸° 1.y 2.n" << endl;
 				cin >> Input;
 				if (Input == 1)
 				{
@@ -159,7 +159,7 @@ int main()
 			cout << endl;
 
 		}
-		cout << "µô·¯Â÷·Ê" << endl << endl;
+		cout << "ë”œëŸ¬ì°¨ë¡€" << endl << endl;
 		for (int i = 0; i < PLAYERNUM; i++)
 		{
 			if (pl[i].isLose == true)
@@ -170,14 +170,14 @@ int main()
 			dl.hand.push_back(deck[CardCount]);
 			CardCount++;
 
-			cout << "µô·¯ vs ÇÃ·¹ÀÌ¾î" << i + 1 << endl;
+			cout << "ë”œëŸ¬ vs í”Œë ˆì´ì–´" << i + 1 << endl;
 			while (1)
 			{
 				dl.PrintHandSum();
 
 				if (dl.sum > 21)
 				{
-					cout << "µô·¯ ÆÐ¹è" << endl;
+					cout << "ë”œëŸ¬ íŒ¨ë°°" << endl;
 					dl.hand.clear();
 					break;
 				}
@@ -189,24 +189,26 @@ int main()
 				}
 				else
 				{
-					cout << "ÇÃ·¹ÀÌ¾î" << i + 1 << " ÇÕ : " << pl[i].sum << endl;
-					cout << "µô·¯ ÇÕ : " << dl.sum << endl;
+					cout << "í”Œë ˆì´ì–´" << i + 1 << " í•© : " << pl[i].sum << endl;
+					cout << "ë”œëŸ¬ í•© : " << dl.sum << endl;
 
 					if (pl[i].sum > dl.sum)
-						cout << "ÇÃ·¹ÀÌ¾î" << i + 1 << " ½Â¸®" << endl;
+						cout << "í”Œë ˆì´ì–´" << i + 1 << " ìŠ¹ë¦¬" << endl;
 
 					else if (pl[i].sum < dl.sum)
-						cout << "µô·¯ ½Â¸®" << endl;
+						cout << "ë”œëŸ¬ ìŠ¹ë¦¬" << endl;
 
 					else
-						cout << "¹«½ÂºÎ" << endl;
+						cout << "ë¬´ìŠ¹ë¶€" << endl;
 					dl.hand.clear();
 					break;
 				}
 			}
 			pl[i].hand.clear();
+			pl[i].hand.shrink_to_fit();
 			cout << endl;
 		}
+		dl.hand.shrink_to_fit();
 		Shuffle(deck, 52);
 		CardCount = 0;
 	}
